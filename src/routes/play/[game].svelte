@@ -19,7 +19,6 @@
 </script>
 
 <script>
-    import Navbar from "$lib/components/Navbar.svelte";
     export let game = {};
 </script>
 

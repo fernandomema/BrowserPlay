@@ -26,9 +26,8 @@ export let game = {};
 <svelte:head>
   <meta name="description" content={game.description.en} />
   <meta property="og:title" content="{game.name} | BrowserPlay" />
-  <meta property="og:image" content="/twitter.png" />
+  <meta property="og:image" content="{game.thumbnail}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@vercel" />
   <meta name="twitter:title" content="{game.name} | BrowserPlay" />
   <meta name="twitter:description" content={game.description.en} />
   <meta name="twitter:image" content={game.thumbnail} />

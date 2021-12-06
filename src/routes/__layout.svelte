@@ -2,5 +2,7 @@
   import '../app.css';
 </script>
 
-<GoogleAnalytics properties={[ 'G-DZ1WT5YXMP' ]} />
+{#if (window.location.hostname != 'localhost')}
+  <GoogleAnalytics properties={[ 'G-DZ1WT5YXMP' ]} />
+{/if}
 <slot />

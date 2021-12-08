@@ -1,4 +1,5 @@
 <script context="module">
+
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ page, fetch, session, stuff }) {
 		const res = await fetch('/api/game/' + encodeURIComponent(page.params.game));
@@ -11,32 +12,43 @@
 			};
 		}
 
+    if (res.status == 404) return {
+      status: 302,
+      headers: {
+        'Location': '/errors/404'
+      }
+    };
+
 		return {
 			status: res.status,
-			error: new Error(`Could not load ${url}`)
+			error: new Error('Failed to load game data')
 		};
 	}
 </script>
 
 <script>
 import Navbar from "$lib/components/Navbar.svelte";
-export let game = {};
+import Error_404 from "../errors/error-404.svelte";
+export let game;
 </script>
 
+
 <svelte:head>
-  <meta name="description" content={game.description.en} />
-  <meta property="og:title" content="{game.name} | BrowserPlay" />
-  <meta property="og:image" content="/twitter.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@vercel" />
-  <meta name="twitter:title" content="{game.name} | BrowserPlay" />
-  <meta name="twitter:description" content={game.description.en} />
-  <meta name="twitter:image" content={game.thumbnail} />
-  <title>{game.name} | BrowserPlay</title>
+  {#if (game)}
+    <meta name="description" content={game.description.en} />
+    <meta property="og:title" content="{game.name} | BrowserPlay" />
+    <meta property="og:image" content="{game.thumbnail}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{game.name} | BrowserPlay" />
+    <meta name="twitter:description" content={game.description.en} />
+    <meta name="twitter:image" content={game.thumbnail} />
+    <title>{game.name} | BrowserPlay</title>
+  {/if}
 </svelte:head>
 
 <Navbar />
 
+{#if (game)}
 <section class="bg-white">
     <div class="px-4 py-5 max-w-screen-xl sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-y-8 gap-x-16">
@@ -88,4 +100,7 @@ export let game = {};
       </div>
     </div>
   </section>
+{:else}
+  <Error_404 />
+{/if}
   

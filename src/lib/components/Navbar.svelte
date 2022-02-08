@@ -68,7 +68,7 @@
 		</nav>
 		
 		<div class="items-center hidden space-x-4 lg:flex">
-			<a class="px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg" href=""> Log in </a>
+			<a class="px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg" href="/api/auth/signin/google?redirect=/"> Log in </a>
 			<a class="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg" href=""> Sign up </a>
 		</div>
 	</div>

@@ -19,9 +19,11 @@
     "tailwindcss": "^2.2.16"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "mongodb": "^4.2.1",
     "prettier": "^2.3.2",
-    "prettier-plugin-svelte": "^2.3.1"
+    "prettier-plugin-svelte": "^2.3.1",
+    "sk-auth": "^0.3.7"
   },
   "prettier": {
     "arrowParens": "always",
@@ -30,3 +32,4 @@
     "trailingComma": "none"
   }
 }
+ 
